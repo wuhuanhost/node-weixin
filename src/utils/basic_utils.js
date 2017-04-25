@@ -102,3 +102,35 @@ exports.parseEventMessage = function(data, cb) {
         }
     });
 }
+
+/**
+*req数据流转换为字符串
+*@param req
+*/
+exports.reqStreamToStr=function(req,cb){
+
+	  //设置字符编码
+      res.setEncoding('utf8');
+
+      //返回数据流
+      var _data="";
+
+      //数据
+      res.on('data', function (chunk) {
+        _data+=chunk;
+        console.log('BODY: ' + chunk);
+      });
+
+      // 结束回调
+      res.on('end', function(){
+        console.log("REBOAK:",_data)
+        cb(null,_data);
+      });
+
+      //错误回调
+      req.on('error', function(e) {
+        console.log('problem with request: ' + e.message);
+		cb(e.message,null);
+      });
+
+}
