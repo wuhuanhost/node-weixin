@@ -1,0 +1,7 @@
+{
+    "appid": "",
+    "key": "",
+    "notify_url": "http://weixin.shangyang123.com/wx-pay",
+    "notify_url1": "http://weixin.shangyang123.com/wx-pay-new",
+    "mch_id": ""
+}
